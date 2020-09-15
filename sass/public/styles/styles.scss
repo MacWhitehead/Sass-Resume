@@ -1,6 +1,6 @@
 @import 'colors';
 
-@mixin flex-row {
+%flex-row {
     display: flex;
     flex-flow: row;
 }
@@ -14,15 +14,17 @@ $black-border: solid 1px black;
 $center-on-section: auto;
 $hundred: 100%;
 $half: 50%;
+$font-family1: Arial, Helvetica, sans-serif;
+$font-family2: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 body {
     width: 1100px;
     max-width: 100vw;
+    font-family: $font-family1;
 }
 
 .top-bar {
-    @include flex-row;
-    height: 220px;
+    @extend %flex-row;
     text-align: center;
     background-position: center;
     position: relative;
@@ -59,9 +61,10 @@ body {
 }
 
 .bottom-container {
-    @include flex-row();
+    @extend %flex-row;
     border: $black-border;
     max-height: 100vh;
+    font-family: $font-family2;
 
     .left-bar {
         width: 350px;
@@ -89,7 +92,7 @@ body {
         .address,
         .linkedin,
         .github {
-            @include flex-row();
+            @extend %flex-row;
             align-items: center;
         }
 
@@ -119,14 +122,13 @@ body {
 }
 
 .bottom-container .skills {
-    @include flex-col;
+    @include flex-col();
     width: $hundred;
     margin: 5px;
 
     h2,
     p,
-    h4,
-        {
+    h4,{
         text-align: left;
         border: none;
         margin: 5px;
@@ -140,6 +142,6 @@ body {
     }
 
     .skill-list {
-        @include flex-row();
+        @extend %flex-row;
     }
 }
