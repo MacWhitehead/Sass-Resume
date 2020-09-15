@@ -1,104 +1,144 @@
-@use 'colors';
+@import 'colors';
+
 @mixin flex-row {
     display: flex;
     flex-flow: row;
 }
+
 @mixin flex-col {
     display: flex;
     flex-flow: column;
 }
+
 $black-border: solid 1px black;
-$center-align: center;
 $center-on-section: auto;
+$hundred: 100%;
+$half: 50%;
+
 body {
+    width: 1100px;
     max-width: 100vw;
-    margin: $center-on-section;
 }
+
 .top-bar {
     @include flex-row;
     height: 220px;
-    text-align: $center-align;
+    text-align: center;
     background-position: center;
     position: relative;
     text-align: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url("/sass/public/images/luca-bravo-XJXWbfSo2f0-unsplash.jpg");
+
     .headshot {
         height: 170px;
         width: 170px;
         margin: 20px 40px 20px 50px;
-        border-radius: 50%;
+        border-radius: $half;
         border: solid 2px white;
     }
+
     .name {
         position: absolute;
         top: 35%;
-        left: 40%;
-        transform: translate(-75%, -50%);
+        left: $half;
+        transform: translate(-75%, -$half);
         color: white;
         font-size: 50px;
     }
+
     .title {
         position: absolute;
         top: 65%;
-        left: 40%;
-        transform: translate(-90%, -50%);
+        left: 48%;
+        transform: translate(-90%, -$half);
         color: whitesmoke;
         font-size: 30px;
     }
 }
+
 .bottom-container {
     @include flex-row();
     border: $black-border;
     max-height: 100vh;
+
     .left-bar {
         width: 350px;
     }
+
     div h3 {
         border: $black-border;
         margin: 5px;
         text-align: center;
     }
+
     h3 {
         background-color: white;
     }
-    .contact-info, .education {
+
+    .contact-info,
+    .education {
         max-width: 300px;
         border: $black-border;
         font-size: 18px;
-        text-align: justify;
-        background-color: colors.$light-blue;
-        .email img, .phone img, .address img {
+        background-color: $light-blue;
+
+        .email,
+        .phone,
+        .address,
+        .linkedin,
+        .github {
+            @include flex-row();
+            align-items: center;
+        }
+
+        .email img,
+        .phone img,
+        .address img {
             height: 40px;
             border-radius: 40%;
         }
+
         .linkedin img {
             height: 30px;
         }
+
         .github img {
             height: 35px;
         }
     }
+
     .education p {
         margin: 10px;
     }
+
+    .bold {
+        text-decoration: underline;
+    }
 }
+
 .bottom-container .skills {
     @include flex-col;
-    width: 100%;
+    width: $hundred;
     margin: 5px;
-    h2, p, h4, {
+
+    h2,
+    p,
+    h4,
+        {
         text-align: left;
         border: none;
-        margin: 5px
+        margin: 5px;
     }
+
     .heading {
         border: $black-border;
-        width: 150px;
+        width: 200px;
         text-align: center;
         margin: 5px;
     }
+
     .skill-list {
         @include flex-row();
     }
